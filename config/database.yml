@@ -1,0 +1,13 @@
+default: &default
+  adapter: postgresql
+  username: postgres
+  host: postgres
+development:
+  <<: *default
+  database: transmedia_development
+test:
+  <<: *default
+  database: transmedia_test
+production:
+  <<: *default
+  database: transmedia_production

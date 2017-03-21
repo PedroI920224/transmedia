@@ -1,0 +1,24 @@
+version: '2'
+services:
+  db:
+    image: postgres
+  web:
+    image: pedro92/transmedia:v0
+    shm_size: 128m
+    stdin_open: true
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/transmedia
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    links:
+      - postgres:postgres
+  postgres:
+    image: postgres:9.4
+    ports: 
+      - "5432"
+    volumes:
+      - ./.data/postgres:/var/lib/postgresql/data
