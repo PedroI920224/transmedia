@@ -3,7 +3,7 @@ services:
   db:
     image: postgres
   web:
-    image: pedro92/transmedia:v0
+    image: pedro92/transmedia:v1
     shm_size: 128m
     stdin_open: true
     build: .
